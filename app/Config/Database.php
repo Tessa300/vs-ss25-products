@@ -29,7 +29,7 @@ class Database extends Config
         'hostname' => '127.0.0.1',
         'username' => 'root',
         'password' => '',
-        'database' => 'vs25_products',
+        'database' => 'db_kitchen',
         'DBDriver' => 'MySQLi',       
         'DBPrefix'     => '',
         'pConnect'     => false,
