@@ -1,6 +1,9 @@
 # Disable directory browsing
 Options -Indexes
 
+# Set Development Mode
+SetEnv CI_ENVIRONMENT development
+
 # ----------------------------------------------------------------------
 # Rewrite engine
 # ----------------------------------------------------------------------
