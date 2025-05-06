@@ -41,4 +41,36 @@ class Validation extends BaseConfig
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------
+
+    public $product = [
+        'name' => 'required|trim',
+        'price_per_unit' => 'required|numeric'
+    ];
+
+    public $product_errors= [
+        'name' => [
+            'required' => 'Der Name muss vorhanden sein'
+        ], 
+        'price_per_unit' => [
+            'required' => 'Der Preis muss vorhanden sein', 
+            'numeric' => 'Der Preis muss eine Zahl sein'
+        ]
+    ];
+
+    public $ingredient = [
+        'product_type_id_sub' => 'required',
+        'amount' => 'required|numeric'
+    ];
+
+    public $ingredient_errors = [
+        'naproduct_type_id_subme' => [
+            'required' => 'Bitte geben Sie einer ProductID ein.'
+        ],
+        'amount' => [
+            'required' => 'Bitte geben Sie eine Menge für das Produkt an.',
+            'numeric' => 'Die Menge muss eine Zahl sein.'
+        ]
+    ];
+
+
 }
