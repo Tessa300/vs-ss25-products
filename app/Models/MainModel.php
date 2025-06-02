@@ -23,7 +23,7 @@ class MainModel extends Model{
     }
 
     public function updateProduct($vals){
-        $query = $this->db->query("Update product_types SET name = '".$vals['name']."', price_per_unit = ".$vals['price_per_unit']." where product_type_id = ".$vals['product_type_id']);
+        $query = $this->db->query("UPDATE `product_types` SET `name` = '".$vals['name']."', `price_per_unit` = '".$vals['price_per_unit']."', `is_meal` = '".$vals['is_meal']."', `unit_symbol` = '".$vals['unit_symbol']."', `enabled` = '".$vals['enabled']."' WHERE `product_types`.`product_type_id` = ".$vals['product_type_id']);
         return $query;
     }
 
