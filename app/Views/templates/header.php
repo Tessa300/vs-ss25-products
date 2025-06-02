@@ -29,6 +29,10 @@
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="<?= site_url('products/') ?>">Produkte</a>
                     <a class="nav-item nav-link" href="<?= site_url('orders/') ?>">Bestellungen</a>
+                    <?php if(session()->has('token')): ?>
+                        <a class="nav-item nav-link" href="<?= site_url('auth/logout') ?>">Logout</a>
+                    <?php endif; ?>
+
                 </div>
             </div>
         </nav>

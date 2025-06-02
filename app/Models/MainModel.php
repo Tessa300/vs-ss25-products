@@ -42,5 +42,20 @@ class MainModel extends Model{
         return $query;
     }
 
+    public function getMenu(){
+        $query = $this->db->query("SELECT 	product_type_id, name, price_per_unit, image_path, unit_symbol 
+FROM 
+	(SELECT product_types.*, SUM(batches.in_stock) AS in_stock, ingredients.amount 
+	FROM product_types 
+		LEFT JOIN ingredients on ingredients.product_type_id_parent = product_types.product_type_id 
+		JOIN batches on ingredients.product_type_id_sub = batches.product_type_id
+	WHERE enabled = 1 AND is_meal = 1 AND expiration_date > NOW()
+	GROUP BY product_types.product_type_id, ingredients.product_type_id_sub) AS stocks
+WHERE 	in_stock >= amount
+GROUP BY product_type_id
+");
+        return $query->getResultArray();
+    }
+
 }
 

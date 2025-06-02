@@ -23,7 +23,7 @@ class Products extends BaseController
                 $data['product_ingredients'] = $this->MainModel->getProductIngredients($product_type_id);
                 $seo['description'] = 'Anzeige des Produkts '.$data['product']['name'];
             }
-            $data['unit_symbols'] = ['kg', 'l', 'Stk.', 'Port.'];
+            $data['unit_symbols'] = ['kg', 'l', 'Stk.', 'Port.']; // 
             $data['ingredients'] = $this->MainModel->getIngredients();
 
             echo view("templates/header", $seo);
@@ -33,6 +33,10 @@ class Products extends BaseController
     }    
 
     public function getIndex($product_type_id = null){
+        if(!session()->has('token')){
+            return redirect()->to(site_url('/'));
+        }
+
         $this->returnView($product_type_id);
     }
 
